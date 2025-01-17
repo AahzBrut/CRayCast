@@ -44,4 +44,10 @@ void DrawMap() {
 
     DrawCircle((int)playerPositionX, (int)playerPositionY, player.radius, RED);
     DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + (float)(cos(player.rotation) * MINIMAP_TILE_SIZE * 2), playerPositionY + (float)(sin(player.rotation) * MINIMAP_TILE_SIZE * 2)}, 1.5f, RED);
+
+    DrawRays();
+}
+
+void DrawRays() {
+
 }
