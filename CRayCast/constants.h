@@ -1,4 +1,13 @@
 #pragma once
 
-#define WINDOW_WIDTH 800
-#define WINDOW_HEIGHT 600
+#define TWO_PI PI * 2
+
+#define TILE_SIZE 64
+#define MAP_ROW_COUNT 13
+#define MAP_COL_COUNT 20
+
+#define WINDOW_WIDTH TILE_SIZE * MAP_COL_COUNT
+#define WINDOW_HEIGHT TILE_SIZE * MAP_ROW_COUNT
+
+#define FOV 60 * DEG2RAD
+#define NUM_RAYS WINDOW_WIDTH

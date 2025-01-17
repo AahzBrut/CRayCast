@@ -17,9 +17,22 @@ FetchContent_Declare(
 FetchContent_MakeAvailable(raylib)
 
 add_executable(CRayCast CRayCast/main.c
-        CRayCast/constants.h)
+        CRayCast/constants.h
+        CRayCast/game_loop/process_input.c
+        CRayCast/game_loop/process_input.h
+        CRayCast/game_loop/render.c
+        CRayCast/game_loop/render.h
+        CRayCast/game_loop/update.c
+        CRayCast/game_loop/update.h
+        CRayCast/data/player.h
+        CRayCast/init/initialize.c
+        CRayCast/init/initialize.h
+        CRayCast/data/player.c
+        CRayCast/data/grid.c
+        CRayCast/data/grid.h)
 
 target_link_libraries(CRayCast PUBLIC raylib)
+target_include_directories(CRayCast PUBLIC CRayCast)
 
 add_custom_target(COPY_ASSETS
         COMMAND

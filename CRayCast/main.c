@@ -1,35 +1,24 @@
 #include <raylib.h>
 
 #include "constants.h"
+#include "game_loop/process_input.h"
+#include "game_loop/render.h"
+#include "game_loop/update.h"
+#include "init/initialize.h"
 
-void Render();
-void Update();
-void ProcessInput();
 
 int main(void) {
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "RayCast Demo");
     SetTargetFPS(60);
 
+    Initialize();
+
     while (!WindowShouldClose()) {
         ProcessInput();
-        Update();
+        Update(GetFrameTime());
         Render();
     }
 
     CloseWindow();
     return 0;
-}
-
-void ProcessInput() {
-
-}
-
-void Update() {
-
-}
-
-void Render() {
-    BeginDrawing();
-    ClearBackground(BLACK);
-    EndDrawing();
 }
