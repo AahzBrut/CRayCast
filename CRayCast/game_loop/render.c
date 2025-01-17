@@ -27,18 +27,18 @@ void RenderFPSCount() {
 }
 
 void DrawMap() {
-    constexpr auto mapXOffset = WINDOW_WIDTH - GRID_COL_COUNT * MAP_TILE_SIZE;
+    constexpr auto mapXOffset = WINDOW_WIDTH - GRID_COL_COUNT * MINIMAP_TILE_SIZE;
     for (auto row = 0; row < GRID_ROW_COUNT; row++) {
         for (auto col = 0; col < GRID_COL_COUNT; col++) {
             if (grid[row][col] != 0) {
-                DrawRectangle(mapXOffset + col * MAP_TILE_SIZE, row * MAP_TILE_SIZE, MAP_TILE_SIZE, MAP_TILE_SIZE, BLUE);
+                DrawRectangle(mapXOffset + col * MINIMAP_TILE_SIZE, row * MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE, BLUE);
             } else {
-                DrawRectangle(mapXOffset + col * MAP_TILE_SIZE, row * MAP_TILE_SIZE, MAP_TILE_SIZE, MAP_TILE_SIZE, WHITE);
+                DrawRectangle(mapXOffset + col * MINIMAP_TILE_SIZE, row * MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE, MINIMAP_TILE_SIZE, WHITE);
             }
         }
     }
     const auto playerGridPositionX = (int)player.position.x / TILE_SIZE;
     const auto playerGridPositionY = (int)player.position.y / TILE_SIZE;
 
-    DrawCircle(mapXOffset + playerGridPositionX * MAP_TILE_SIZE + MAP_TILE_SIZE / 2, playerGridPositionY * MAP_TILE_SIZE + MAP_TILE_SIZE / 2, player.radius, RED);
+    DrawCircle(mapXOffset + playerGridPositionX * MINIMAP_TILE_SIZE + MINIMAP_TILE_SIZE / 2, playerGridPositionY * MINIMAP_TILE_SIZE + MINIMAP_TILE_SIZE / 2, player.radius, RED);
 }

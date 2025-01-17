@@ -3,7 +3,7 @@
 #define TWO_PI PI * 2
 
 #define TILE_SIZE 64
-#define MAP_TILE_SIZE 16
+#define MINIMAP_TILE_SIZE 16
 #define GRID_ROW_COUNT 13
 #define GRID_COL_COUNT 20
 
