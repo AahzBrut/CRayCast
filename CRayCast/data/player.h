@@ -1,7 +1,7 @@
 #pragma once
 #include "raylib.h"
 
-typedef struct Player {
+struct Player {
     Vector2 position;
     float radius;
     float walkSpeed;
@@ -9,6 +9,6 @@ typedef struct Player {
     int turnDirection;
     int walkDirection;
     float rotation;
-} Player;
+};
 
-extern Player player;
+extern struct Player player;

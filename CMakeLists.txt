@@ -29,7 +29,8 @@ add_executable(CRayCast CRayCast/main.c
         CRayCast/init/initialize.h
         CRayCast/data/player.c
         CRayCast/data/grid.c
-        CRayCast/data/grid.h)
+        CRayCast/data/grid.h
+)
 
 target_link_libraries(CRayCast PUBLIC raylib)
 target_include_directories(CRayCast PUBLIC CRayCast)

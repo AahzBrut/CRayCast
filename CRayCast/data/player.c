@@ -1,3 +1,3 @@
-#include "player.h"
+#include "data/player.h"
 
-Player player;
+struct Player player;
