@@ -9,7 +9,7 @@ void Initialize() {
     player.radius = 4;
     player.rotation = PI / 2;
     player.turnDirection = 0;
-    player.turnSpeed = PI / 4;
+    player.turnSpeed = PI / 3;
     player.walkDirection = 0;
-    player.walkSpeed = 60;
+    player.walkSpeed = 100;
 }
