@@ -12,3 +12,5 @@ struct Player {
 };
 
 extern struct Player player;
+
+void MovePlayer(float deltaTime);
