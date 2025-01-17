@@ -1,6 +1,6 @@
 #include "grid.h"
 
-int grid[MAP_ROW_COUNT][MAP_COL_COUNT] = {
+int grid[GRID_ROW_COUNT][GRID_COL_COUNT] = {
     {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ,1, 1, 1, 1, 1, 1, 1},
     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 1},
     {1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 8, 0, 0, 0, 1},

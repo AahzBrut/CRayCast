@@ -1,4 +1,4 @@
 #pragma once
 #include "constants.h"
 
-extern int grid[MAP_ROW_COUNT][MAP_COL_COUNT];
+extern int grid[GRID_ROW_COUNT][GRID_COL_COUNT];
