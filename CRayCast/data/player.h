@@ -8,7 +8,7 @@ struct Player {
     float turnSpeed;
     int turnDirection;
     int walkDirection;
-    float rotation;
+    double rotation;
 };
 
 extern struct Player player;

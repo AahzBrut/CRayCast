@@ -1,4 +1,6 @@
 #include "render.h"
+
+#include <math.h>
 #include <stdio.h>
 
 #include "constants.h"
@@ -12,8 +14,6 @@ void Render() {
     ClearBackground(BLACK);
 
     DrawMap();
-
-    DrawRectangleV(player.position, (Vector2){64, 64}, RED);
 
     RenderFPSCount();
 
@@ -37,8 +37,11 @@ void DrawMap() {
             }
         }
     }
-    const auto playerGridPositionX = (int)player.position.x / TILE_SIZE;
-    const auto playerGridPositionY = (int)player.position.y / TILE_SIZE;
+    const auto playerGridPositionX = player.position.x / TILE_SIZE;
+    const auto playerGridPositionY = player.position.y / TILE_SIZE;
+    const auto playerPositionX = mapXOffset + playerGridPositionX * MINIMAP_TILE_SIZE;
+    const auto playerPositionY = playerGridPositionY * MINIMAP_TILE_SIZE;
 
-    DrawCircle(mapXOffset + playerGridPositionX * MINIMAP_TILE_SIZE + MINIMAP_TILE_SIZE / 2, playerGridPositionY * MINIMAP_TILE_SIZE + MINIMAP_TILE_SIZE / 2, player.radius, RED);
+    DrawCircle((int)playerPositionX, (int)playerPositionY, player.radius, RED);
+    DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + (float)(cos(player.rotation) * MINIMAP_TILE_SIZE * 2), playerPositionY + (float)(sin(player.rotation) * MINIMAP_TILE_SIZE * 2)}, 1.5f, RED);
 }
