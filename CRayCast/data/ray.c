@@ -95,6 +95,7 @@ void CastRay(float rayAngle, const int stripId) {
            nextVertTouchX <= GRID_COL_COUNT * TILE_SIZE &&
            nextVertTouchY >= 0 &&
            nextVertTouchY <= GRID_ROW_COUNT * TILE_SIZE) {
+
         const auto xToCheck = nextVertTouchX + (isRayFacingLeft ? -1.f : 0.f);
         const auto yToCheck = nextVertTouchY;
 

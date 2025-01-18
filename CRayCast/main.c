@@ -20,6 +20,7 @@ int main(void) {
         Render();
     }
 
+    DeInitialize();
     CloseWindow();
     return 0;
 }

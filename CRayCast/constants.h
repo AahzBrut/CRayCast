@@ -1,7 +1,7 @@
 #pragma once
 #include <raylib.h>
 
-#define TWO_PI PI * 2
+#define TWO_PI (PI * 2)
 
 #define TILE_SIZE 64
 #define MINIMAP_TILE_SIZE 16

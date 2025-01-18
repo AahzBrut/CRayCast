@@ -5,3 +5,4 @@ void RenderFPSCount();
 void DrawMap();
 void DrawRays();
 void DrawPlayer();
+void RenderWorld();
