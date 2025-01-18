@@ -50,9 +50,10 @@ void CastRay(float rayAngle, const int stripId) {
     auto nextHorzTouchY = yIntercept;
 
     while (nextHorzTouchX >= 0 &&
-           nextHorzTouchX <= GRID_COL_COUNT * TILE_SIZE &&
+           nextHorzTouchX <= WINDOW_WIDTH &&
            nextHorzTouchY >= 0 &&
-           nextHorzTouchY <= GRID_ROW_COUNT * TILE_SIZE) {
+           nextHorzTouchY <= WINDOW_HEIGHT) {
+
         const auto xToCheck = nextHorzTouchX;
         const auto yToCheck = nextHorzTouchY + (isRayFacingUp ? -1.f : 0.f);
 
@@ -81,11 +82,11 @@ void CastRay(float rayAngle, const int stripId) {
     yIntercept = player.position.y + (xIntercept - player.position.x) * tanf(rayAngle);
 
     xStep = TILE_SIZE;
-    xStep *= isRayFacingLeft ? -1 : 1;
+    xStep *= isRayFacingLeft ? -1.f : 1.f;
 
     yStep = TILE_SIZE * tanf(rayAngle);
-    yStep *= isRayFacingUp && yStep > 0 ? -1 : 1;
-    yStep *= isRayFacingDown && yStep < 0 ? -1 : 1;
+    yStep *= isRayFacingUp && yStep > 0 ? -1.f : 1.f;
+    yStep *= isRayFacingDown && yStep < 0 ? -1.f : 1.f;
 
     auto nextVertTouchX = xIntercept;
     auto nextVertTouchY = yIntercept;

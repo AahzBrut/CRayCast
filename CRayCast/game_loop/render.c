@@ -35,8 +35,8 @@ void DrawPlayer() {
     const auto playerPositionX = MINIMAP_X_OFFSET + playerGridPositionX * MINIMAP_TILE_SIZE;
     const auto playerPositionY = playerGridPositionY * MINIMAP_TILE_SIZE;
 
-    DrawCircle((int)playerPositionX, (int)playerPositionY, player.radius, RED);
-    DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + cosf(player.rotation) * MINIMAP_TILE_SIZE * 2, playerPositionY + sinf(player.rotation) * MINIMAP_TILE_SIZE * 2}, 1.5f, RED);
+    DrawCircle((int)playerPositionX, (int)playerPositionY, player.radius, BLUE);
+    DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + cosf(player.rotation) * MINIMAP_TILE_SIZE * 2, playerPositionY + sinf(player.rotation) * MINIMAP_TILE_SIZE * 2}, 1.5f, BLUE);
 }
 
 void DrawMap() {
