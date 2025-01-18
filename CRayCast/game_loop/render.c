@@ -9,6 +9,9 @@
 #include "data/player.h"
 #include "data/ray.h"
 
+Texture2D wallTexture;
+// ReSharper disable once CppUseAutoForNumeric
+bool renderTextured = false;
 
 void Render() {
     BeginDrawing();
@@ -48,14 +51,25 @@ void RenderWorld() {
     for (auto index = 0; index < NUM_RAYS; index++) {
         const auto ray = rays[index];
         const auto correctedDistance = ray.distance * cosf(ray.angle - player.rotation);
-        const auto distanceToProjPlane = (float)WINDOW_WIDTH / 2.f * tanf(FOV / 2.f);
+        const auto distanceToProjPlane = (float) WINDOW_WIDTH / 2.f * tanf(FOV / 2.f);
         const auto projectedWallHeight = TILE_SIZE / correctedDistance * distanceToProjPlane;
-        auto wallTopPixel = WINDOW_HEIGHT / 2 - (int)projectedWallHeight / 2;
+        auto wallTopPixel = WINDOW_HEIGHT / 2 - (int) projectedWallHeight / 2;
         wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
-        auto wallBottomPixel = WINDOW_HEIGHT / 2 + (int)projectedWallHeight / 2;
+        auto wallBottomPixel = WINDOW_HEIGHT / 2 + (int) projectedWallHeight / 2;
         wallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
-        const auto wallColor = ray.isHitVertical ? WHITE : GRAY;
-        DrawLine(index, wallTopPixel, index, wallBottomPixel, wallColor);
+        const auto skyColor = BLUE;
+        const auto floorColor = DARKGRAY;
+        if (wallTopPixel > 0) DrawLine(index, 0, index, wallTopPixel, skyColor);
+        if (!renderTextured) {
+            const auto wallColor = ray.isHitVertical ? WHITE : LIGHTGRAY;
+            DrawLine(index, wallTopPixel, index, wallBottomPixel, wallColor);
+        } else {
+            const auto wallColor = ray.isHitVertical ? WHITE : LIGHTGRAY;
+            const auto sourceRect = (Rectangle){(float)(index % TILE_SIZE), 0, 1, TILE_SIZE};
+            const auto targetRect = (Rectangle){(float)index, (float)wallTopPixel, 1, (float)wallBottomPixel - (float)wallTopPixel};
+            DrawTexturePro(wallTexture, sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
+        }
+        if (wallBottomPixel < WINDOW_HEIGHT) DrawLine(index, wallBottomPixel, index, WINDOW_HEIGHT, floorColor);
     }
 }
 
