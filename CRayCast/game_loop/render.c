@@ -15,8 +15,8 @@ void Render() {
     ClearBackground(BLACK);
 
     DrawMap();
-    DrawPlayer();
     DrawRays();
+    DrawPlayer();
 
     RenderFPSCount();
 
@@ -36,7 +36,7 @@ void DrawPlayer() {
     const auto playerPositionY = playerGridPositionY * MINIMAP_TILE_SIZE;
 
     DrawCircle((int)playerPositionX, (int)playerPositionY, player.radius, RED);
-    DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + (float)(cos(player.rotation) * MINIMAP_TILE_SIZE * 2), playerPositionY + (float)(sin(player.rotation) * MINIMAP_TILE_SIZE * 2)}, 1.5f, RED);
+    DrawLineEx((Vector2){playerPositionX, playerPositionY}, (Vector2){playerPositionX + cosf(player.rotation) * MINIMAP_TILE_SIZE * 2, playerPositionY + sinf(player.rotation) * MINIMAP_TILE_SIZE * 2}, 1.5f, RED);
 }
 
 void DrawMap() {

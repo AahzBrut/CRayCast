@@ -12,7 +12,7 @@ void MovePlayer(const float deltaTime) {
     const auto newPlayerX = player.position.x + player.walkSpeed * (float)player.walkDirection * cosf(player.rotation) * deltaTime;
     const auto newPlayerY = player.position.y + player.walkSpeed * (float)player.walkDirection * sinf(player.rotation) * deltaTime;
 
-    if (HasWallAtGridPosition(newPlayerX, newPlayerY)) {
+    if (!HasWallAtGridPosition(newPlayerX, newPlayerY)) {
         player.position.x = newPlayerX;
         player.position.y = newPlayerY;
     }
