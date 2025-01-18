@@ -53,16 +53,16 @@ void RenderWorld() {
         const auto correctedDistance = ray.distance * cosf(ray.angle - player.rotation);
         const auto distanceToProjPlane = (float) WINDOW_WIDTH / 2.f * tanf(FOV / 2.f);
         const auto projectedWallHeight = TILE_SIZE / correctedDistance * distanceToProjPlane;
-        auto wallTopPixel = WINDOW_HEIGHT / 2 - (int) projectedWallHeight / 2;
-        wallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
-        auto wallBottomPixel = WINDOW_HEIGHT / 2 + (int) projectedWallHeight / 2;
-        wallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
+        const auto wallTopPixel = WINDOW_HEIGHT / 2 - (int) projectedWallHeight / 2;
+        const auto scaledWallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
+        const auto wallBottomPixel = WINDOW_HEIGHT / 2 + (int) projectedWallHeight / 2;
+        const auto scaledWallBottomPixel = wallBottomPixel > WINDOW_HEIGHT ? WINDOW_HEIGHT : wallBottomPixel;
         const auto skyColor = BLUE;
         const auto floorColor = DARKGRAY;
         if (wallTopPixel > 0) DrawLine(index, 0, index, wallTopPixel, skyColor);
         if (!renderTextured) {
             const auto wallColor = ray.isHitVertical ? WHITE : LIGHTGRAY;
-            DrawLine(index, wallTopPixel, index, wallBottomPixel, wallColor);
+            DrawLine(index, scaledWallTopPixel, index, scaledWallBottomPixel, wallColor);
         } else {
             const auto wallColor = ray.isHitVertical ? WHITE : LIGHTGRAY;
             const auto textureOffsetX = ray.isHitVertical ? (int)ray.wallHitPosition.y % TILE_SIZE : (int)ray.wallHitPosition.x % TILE_SIZE;
