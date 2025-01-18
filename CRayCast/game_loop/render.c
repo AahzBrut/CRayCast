@@ -65,7 +65,8 @@ void RenderWorld() {
             DrawLine(index, wallTopPixel, index, wallBottomPixel, wallColor);
         } else {
             const auto wallColor = ray.isHitVertical ? WHITE : LIGHTGRAY;
-            const auto sourceRect = (Rectangle){(float)(index % TILE_SIZE), 0, 1, TILE_SIZE};
+            const auto textureOffsetX = ray.isHitVertical ? (int)ray.wallHitPosition.y % TILE_SIZE : (int)ray.wallHitPosition.x % TILE_SIZE;
+            const auto sourceRect = (Rectangle){(float)textureOffsetX, 0, 1, TILE_SIZE};
             const auto targetRect = (Rectangle){(float)index, (float)wallTopPixel, 1, (float)wallBottomPixel - (float)wallTopPixel};
             DrawTexturePro(wallTexture, sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
         }
