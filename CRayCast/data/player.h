@@ -8,7 +8,7 @@ extern struct Player {
     float turnSpeed;
     int turnDirection;
     int walkDirection;
-    double rotation;
+    float rotation;
 } player;
 
 void MovePlayer(float deltaTime);

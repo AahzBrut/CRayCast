@@ -8,9 +8,9 @@
 
 
 int main(void) {
-    SetConfigFlags(FLAG_VSYNC_HINT);
+    //SetConfigFlags(FLAG_VSYNC_HINT);
     InitWindow(WINDOW_WIDTH, WINDOW_HEIGHT, "RayCast Demo");
-    SetTargetFPS(60);
+    //SetTargetFPS(60);
 
     Initialize();
 
