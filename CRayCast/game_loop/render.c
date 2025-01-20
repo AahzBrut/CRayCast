@@ -51,8 +51,7 @@ void RenderWorld() {
     for (auto index = 0; index < NUM_RAYS; index++) {
         const auto ray = rays[index];
         const auto correctedDistance = ray.distance * cosf(ray.angle - player.rotation);
-        const auto distanceToProjPlane = (float) WINDOW_WIDTH / 2.f * tanf(FOV / 2.f);
-        const auto projectedWallHeight = TILE_SIZE / correctedDistance * distanceToProjPlane;
+        const auto projectedWallHeight = TILE_SIZE / correctedDistance * PROJ_PLANE_DISTANCE;
         const auto wallTopPixel = WINDOW_HEIGHT / 2 - (int) projectedWallHeight / 2;
         const auto scaledWallTopPixel = wallTopPixel < 0 ? 0 : wallTopPixel;
         const auto wallBottomPixel = WINDOW_HEIGHT / 2 + (int) projectedWallHeight / 2;
@@ -68,7 +67,7 @@ void RenderWorld() {
             const auto textureOffsetX = ray.isHitVertical ? (int)ray.wallHitPosition.y % TILE_SIZE : (int)ray.wallHitPosition.x % TILE_SIZE;
             const auto sourceRect = (Rectangle){(float)textureOffsetX, 0, 1, TILE_SIZE};
             const auto targetRect = (Rectangle){(float)index, (float)wallTopPixel, 1, (float)wallBottomPixel - (float)wallTopPixel};
-            DrawTexturePro(wallTextures[0], sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
+            DrawTexturePro(wallTextures[ray.WallType - 1], sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
         }
         if (wallBottomPixel < WINDOW_HEIGHT) DrawLine(index, wallBottomPixel, index, WINDOW_HEIGHT, floorColor);
     }

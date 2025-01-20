@@ -10,10 +10,9 @@
 struct RayCast rays[NUM_RAYS];
 
 void CastAllRays() {
-    auto rayAngle = player.rotation - FOV / 2;
     for (auto stripId = 0; stripId < NUM_RAYS; stripId++) {
-        CastRay(rayAngle, stripId);
-        rayAngle += FOV / NUM_RAYS;
+        const auto angle = player.rotation + atanf(((float)stripId - (float)NUM_RAYS / 2) / PROJ_PLANE_DISTANCE);
+        CastRay(angle, stripId);
     }
 }
 

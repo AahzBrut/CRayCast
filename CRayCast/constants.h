@@ -1,4 +1,5 @@
 #pragma once
+#include <math.h>
 #include <raylib.h>
 
 #define TWO_PI (PI * 2)
@@ -14,5 +15,6 @@
 
 #define FOV (60 * DEG2RAD)
 #define NUM_RAYS WINDOW_WIDTH
+#define PROJ_PLANE_DISTANCE (WINDOW_WIDTH * tanf(FOV * 0.5f))
 
 #define NUM_TEXTURES 8
