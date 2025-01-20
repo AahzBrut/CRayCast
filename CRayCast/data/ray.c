@@ -49,9 +49,9 @@ void CastRay(float rayAngle, const int stripId) {
     auto nextHorzTouchY = yIntercept;
 
     while (nextHorzTouchX >= 0 &&
-           nextHorzTouchX <= WINDOW_WIDTH &&
+           nextHorzTouchX <= GRID_COL_COUNT * TILE_SIZE &&
            nextHorzTouchY >= 0 &&
-           nextHorzTouchY <= WINDOW_HEIGHT) {
+           nextHorzTouchY <= GRID_ROW_COUNT * TILE_SIZE) {
 
         const auto xToCheck = nextHorzTouchX;
         const auto yToCheck = nextHorzTouchY + (isRayFacingUp ? -1.f : 0.f);

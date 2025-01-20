@@ -17,6 +17,6 @@ int grid[GRID_ROW_COUNT][GRID_COL_COUNT] = {
 };
 
 bool HasWallAtGridPosition(const float x, const float y) {
-    if (x < 0 || x > WINDOW_WIDTH || y < 0 || y > WINDOW_HEIGHT) return true;
+    if (x < 0 || x > GRID_COL_COUNT * TILE_SIZE || y < 0 || y > GRID_ROW_COUNT * TILE_SIZE) return true;
     return grid[(int) (y / TILE_SIZE)][(int) (x / TILE_SIZE)] != 0;
 }

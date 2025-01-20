@@ -7,7 +7,7 @@
 #include "game_loop/render.h"
 
 void Initialize() {
-    player.position = (Vector2){(float) WINDOW_WIDTH / 2, (float) WINDOW_HEIGHT / 2};
+    player.position = (Vector2){(float) GRID_COL_COUNT * TILE_SIZE / 2, (float) GRID_ROW_COUNT * TILE_SIZE / 2};
     player.walkSpeed = 60;
     player.radius = 4;
     player.rotation = PI / 2;

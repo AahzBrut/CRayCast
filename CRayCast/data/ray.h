@@ -2,18 +2,14 @@
 #include <raylib.h>
 #include "constants.h"
 
+
 extern struct RayCast {
     float angle;
     Vector2 wallHitPosition;
     float distance;
-    int isHitVertical;
-    int isFacingUp;
-    int isFacingRight;
-    int isFacingDown;
-    int isFacingLeft;
+    bool isHitVertical;
     int WallType;
 } rays[NUM_RAYS];
-
 
 void CastAllRays();
 void CastRay(float rayAngle, int stripId);
