@@ -16,11 +16,18 @@ void Initialize() {
     player.walkDirection = 0;
     player.walkSpeed = 100;
 
-    const auto textureImage = GenImageChecked(64, 64, 8, 8, DARKGREEN, GREEN);
-    wallTexture = LoadTextureFromImage(textureImage);
-    UnloadImage(textureImage);
+    wallTextures[0] = LoadTexture("./assets/Brick_Wall_64x64.png");
+    wallTextures[1] = LoadTexture("./assets/Brick_Wall_Cracked_64x64.png");
+    wallTextures[2] = LoadTexture("./assets/Grass_64x64.png");
+    wallTextures[3] = LoadTexture("./assets/Green_Wall_Rocks_64x64.png");
+    wallTextures[4] = LoadTexture("./assets/Magma_Floor_64x64.png");
+    wallTextures[5] = LoadTexture("./assets/Rocky_Road_64x64.png");
+    wallTextures[6] = LoadTexture("./assets/Wooden_Floor_Horizontal_64x64.png");
+    wallTextures[7] = LoadTexture("./assets/Wooden_Floor_Vertical_64x64.png");
 }
 
 void DeInitialize() {
-    UnloadTexture(wallTexture);
+    for (auto i = 0; i < NUM_TEXTURES; i++) {
+        UnloadTexture(wallTextures[i]);
+    }
 }

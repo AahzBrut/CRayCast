@@ -14,3 +14,5 @@
 
 #define FOV (60 * DEG2RAD)
 #define NUM_RAYS WINDOW_WIDTH
+
+#define NUM_TEXTURES 8

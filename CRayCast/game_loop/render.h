@@ -1,8 +1,9 @@
 #pragma once
+#include "constants.h"
 #include "raylib.h"
 
 
-extern Texture2D wallTexture;
+extern Texture2D wallTextures[NUM_TEXTURES];
 extern bool renderTextured;
 
 void Render();

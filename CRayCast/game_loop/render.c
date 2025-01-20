@@ -9,7 +9,7 @@
 #include "data/player.h"
 #include "data/ray.h"
 
-Texture2D wallTexture;
+Texture2D wallTextures[NUM_TEXTURES];
 // ReSharper disable once CppUseAutoForNumeric
 bool renderTextured = false;
 
@@ -68,7 +68,7 @@ void RenderWorld() {
             const auto textureOffsetX = ray.isHitVertical ? (int)ray.wallHitPosition.y % TILE_SIZE : (int)ray.wallHitPosition.x % TILE_SIZE;
             const auto sourceRect = (Rectangle){(float)textureOffsetX, 0, 1, TILE_SIZE};
             const auto targetRect = (Rectangle){(float)index, (float)wallTopPixel, 1, (float)wallBottomPixel - (float)wallTopPixel};
-            DrawTexturePro(wallTexture, sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
+            DrawTexturePro(wallTextures[0], sourceRect, targetRect, (Vector2){0,0}, 0, wallColor);
         }
         if (wallBottomPixel < WINDOW_HEIGHT) DrawLine(index, wallBottomPixel, index, WINDOW_HEIGHT, floorColor);
     }
